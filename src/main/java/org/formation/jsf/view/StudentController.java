@@ -1,5 +1,6 @@
 package org.formation.jsf.view;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -164,10 +165,22 @@ public class StudentController implements Serializable {
 	}
 
 	public String logOut() {
+//		FacesContext facesContext = FacesContext.getCurrentInstance();
+//		ExternalContext externalContext = facesContext.getExternalContext();
+//		externalContext.invalidateSession();
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = facesContext.getExternalContext();
 		externalContext.invalidateSession();
-		return "index";
+		externalContext.setResponseStatus(401);
+		try {
+			externalContext.getResponseOutputWriter().write("<html><head><meta http-equiv='refresh' content='0;URL=faces/list-students.xhtml'></head></html>");
+		} catch (IOException e) {
+		
+			e.printStackTrace();
+		}
+		facesContext.responseComplete();
+
+		return "login";
 	}
 
 }

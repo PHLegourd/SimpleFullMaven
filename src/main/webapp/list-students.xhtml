@@ -33,7 +33,9 @@
 		<div id="content">
 
 			<h:messages globalOnly="true" />
-
+			<h:button value="Logout" action="#{studentController.logOut()}"
+				styleClass="add-student-button" outcome="list-students"/>
+				
 			<h:button value="Add Student" styleClass="add-student-button"
 				outcome="add-student-form" />
 
