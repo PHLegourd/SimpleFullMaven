@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -18,8 +17,8 @@ import org.formation.jsf.service.IStudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//annoter : "nommer"
-//en session
+@Named
+@SessionScoped
 public class StudentController implements Serializable {
 
 	private static final long serialVersionUID = 3774463683041113840L;
@@ -27,7 +26,7 @@ public class StudentController implements Serializable {
 	private List<Student> students;
 	private static Logger LOGGER = LoggerFactory.getLogger(StudentController.class);
 
-	//Injecter
+	@Inject
 	private IStudentService service;
 
 	public StudentController() throws Exception {
@@ -37,7 +36,7 @@ public class StudentController implements Serializable {
 
 	@PostConstruct
 	public void initService() {
-		System.out.println(this.getClass().getName() + "je suis ;;construit !" + service);
+		System.out.println(this.getClass().getName() + " je suis construit !" + service);
 	}
 
 	public List<Student> getStudents() {
@@ -45,7 +44,6 @@ public class StudentController implements Serializable {
 	}
 
 	public void loadStudents() {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 		LOGGER.debug("lister students");
 		LOGGER.info("information");

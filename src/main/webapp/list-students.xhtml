@@ -48,24 +48,26 @@
 						<f:facet name="header">First Name</f:facet>
 
 						<!--  the value for each row -->
-
-				</h:column>
+						<!--  value : the dataTable's var, which for each row is an object Student, -->
+						<!--  and the .method, which works because Student is a managed bean -->
+						<h:outputText value="#{tempStudent.firstName}" />
+					</h:column>
 
 					<h:column>
 						<!-- the column header -->
 						<f:facet name="header">Last Name</f:facet>
 
 						<!--  the value for each row -->
-
-				</h:column>
+						<h:outputText value="#{tempStudent.lastName}" />
+					</h:column>
 
 					<h:column>
 						<!-- the column header -->
 						<f:facet name="header">Email</f:facet>
 
 						<!--  the value for each row -->
-
-				</h:column>
+						<h:outputText value="#{tempStudent.email}" />
+					</h:column>
 
 					<h:column>
 						<!-- the column header -->
@@ -84,7 +86,7 @@
 
 				</h:dataTable>
 				<div>
-<!-- creer un lien pour se delogger -->
+					<!-- creer un lien pour se delogger -->
 				</div>
 			</h:form>
 

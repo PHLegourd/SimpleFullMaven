@@ -5,20 +5,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-//Completer pour JSF
-//Completer pour JPA
+@ManagedBean
+@Entity
+@Table(name = "STUDENT")
 public class Student {
 
-	//Completer pour JPA
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String firstName;
 	private String lastName;
 	private String email;
-	
+
 	public Student() {
 	}
-	
+
 	public Student(int id, String firstName, String lastName, String email) {
 		this.id = id;
 		this.firstName = firstName;
@@ -60,8 +63,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", email=" + email + "]";
+		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
 
 }
